@@ -334,21 +334,14 @@ class Pet:
     def weight(self):
         self.weight = weight
 
-    @property
-    def change_weight(self, weight=None):
-        if weight:
-            self.weight = weight
-        else:
-            self.weight = weight + 0.2
+    def change_weight(self, value=0.2):
+        self.weight = self.weight + value
 
     def height(self):
         self.height = height
 
-    def change_height(self, height):
-        if height:
-            self.height = height
-        else:
-            self.height += 0.2
+    def change_height(self, value=0.2):
+        self.height = self.height + value
 
 
 class Dog(Pet):
@@ -362,12 +355,7 @@ class Cat(Pet):
 
 
 class Parrot(Pet):
-    @property
     def parrot_fly(self):
-        return 'fly'
-
-    def parrot_fly(self, weight):
-        self.weight = weight
         if self.weight>0.1:
             fly = 'This parrot cannot fly'
         else:
@@ -377,16 +365,21 @@ class Parrot(Pet):
 
 dog_pet = Dog('Max', 8, 'Sam Orwel', 15, 45)
 cat_pet = Cat('Rich', 4.5, 'Igor Gavrik', 6, 25)
-parrot_pet = Parrot('Rick', 5, 'Lera Simpson', 0.01, 20)
+parrot_pet = Parrot('Rick', 5, 'Lera Simpson', 0.1, 20)
 print(f'Dog name: {dog_pet.name}. Dog age: {dog_pet.age}. Dog master: {dog_pet.master}. Dog weight: {dog_pet.weight}. Dog height: {dog_pet.height}.')
 print(f'Cat name: {cat_pet.name}. Cat age: {cat_pet.age}. Cat master: {cat_pet.master}. Cat weight: {cat_pet.weight}. Cat height: {cat_pet.height}.')
 print(f'Parrot name: {parrot_pet.name}. Parrot age: {parrot_pet.age}. Parrot master: {parrot_pet.master}. Parrot weight: {parrot_pet.weight}. Parrot height: {parrot_pet.height}.')
-dog_pet.change_weight(16)
-# dog_pet.age = dog_pet.age + 1
-# cat_pet.age = cat_pet.age + 1
-# parrot_pet.age = parrot_pet.age + 1
-# print(f'Dog age changed: {dog_pet.age}. Cat got older and now: {cat_pet.age}. Parrot followed them and went to: {parrot_pet.age}')
-# print('')
-# print(f'Dog {dog_pet.name} can {dog_pet.pet_jump}, {dog_pet.pet_run}, {dog_pet.pet_sleep} and like no others - {dog_pet.dog_bark()}.')
-# print(f'Cat {cat_pet.name} can {cat_pet.pet_jump}, {cat_pet.pet_run}, {cat_pet.pet_sleep} and like no others - {cat_pet.cat_meow()}.')
-# print(f'Parrot {parrot_pet.name} can {parrot_pet.pet_jump}, {parrot_pet.pet_run}, {parrot_pet.pet_sleep} and like no others - {parrot_pet.parrot_fly()}.')
+dog_pet.change_weight()
+cat_pet.change_weight()
+parrot_pet.change_weight()
+dog_pet.change_height()
+cat_pet.change_height()
+parrot_pet.change_height()
+print('\nTime passed by. Heights and weights of pets have changed.')
+print(f'Dog name: {dog_pet.name}. Dog age: {dog_pet.age}. Dog master: {dog_pet.master}. Dog weight: {dog_pet.weight}. Dog height: {dog_pet.height}.')
+print(f'Cat name: {cat_pet.name}. Cat age: {cat_pet.age}. Cat master: {cat_pet.master}. Cat weight: {cat_pet.weight}. Cat height: {cat_pet.height}.')
+print(f'Parrot name: {parrot_pet.name}. Parrot age: {parrot_pet.age}. Parrot master: {parrot_pet.master}. Parrot weight: {parrot_pet.weight}. Parrot height: {parrot_pet.height}.')
+print('')
+print(f'Dog {dog_pet.name} can {dog_pet.pet_jump}, {dog_pet.pet_run}, {dog_pet.pet_sleep} and like no others - {dog_pet.dog_bark()}.')
+print(f'Cat {cat_pet.name} can {cat_pet.pet_jump}, {cat_pet.pet_run}, {cat_pet.pet_sleep} and like no others - {cat_pet.cat_meow()}.')
+print(f'Parrot {parrot_pet.name} can {parrot_pet.pet_jump}, {parrot_pet.pet_run}, {parrot_pet.pet_sleep} and like no others - {parrot_pet.parrot_fly()}.')
